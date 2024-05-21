@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+    <link rel="stylesheet" href="admin.css">
+    
+</head>
+<body ng-controller="myctrl as addtsk">
+    <div class="todo-app">
+      <form class="input-section" ng-submit="addTodo()">
+        <input id="todoInput" type="text" placeholder="Add task..." ng-model="desc" />
+        <button id="addBtn" type="submit" class="add">Add</button>
+      </form>
+      <div class="todos">  
+      <div class="grow" style="display:block"> 
+        <span style="margin-left: 4%; ">{{remaining()}} of {{ tasks.length}} remaining</span> 
+        <button id="addBtn" type="submit" class="add" ng-click="clean()">Clear all</button>
+        <button id="addBtn" type="submit" class="add" ng-click="selecteddel()">clear completed</button>
+        </div>
+        <ul class="todo-list"><br>
+          <div class="todo-text">
+            <li class="li" ng-repeat="task in tasks " >
+              <button class="delete-button" ng-click="deltodo($index)" >X</button>
+              <input class="form-check-input" type="checkbox" value="option1" ng-model="task.status"  ng-change="updt()" required>
+              <label class="form-check-label" for="inlineCheckbox1" ng-class="{ 'completed': task.status }" style="color: #ddd;">{{task.taskDesc}}</label>
+              
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script src="angular.min.js"></script>
+  <script src="app.js"></script>
+</html>
